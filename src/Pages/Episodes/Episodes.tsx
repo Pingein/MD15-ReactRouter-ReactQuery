@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
 import styles from './Episodes.module.css'
 
+import { EpData } from '../../assets/interfaces'
+
 import { useQuery, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Data } from '../../assets/interfaces'
 import axios from 'axios'
+import Pagination from '../../assets/Pagination/Pagination'
+import DescriptionCard from '../../assets/DescriptionCard/DescriptionCard'
+import CardsSkeleton from '../../assets/CardsSkeleton/CardsSkeleton'
+import { Outlet } from 'react-router-dom'
 
 interface EpisodesParams {
 
@@ -12,31 +18,48 @@ interface EpisodesParams {
 const Episodes = ({}:EpisodesParams) => {
     const [currentPage, setCurrentPage] = useState(1)
 
-    const postQueryEp = useQuery({
-        queryKey: ["posts"],
+    const characterQuery = useQuery({
+        queryKey: ["episode", {page: currentPage}],
         queryFn: () => axios.get(`https://rickandmortyapi.com/api/episode?page=${currentPage}`)
-                            .then(res => res.data as Data)
+                            .then(res => res.data as EpData)
     })
 
-    if (postQueryEp.isLoading) {
-        return (
-            <div>
-                <h1>Loading...</h1>
-            </div>
-        )
+    
+    if (characterQuery.isLoading) {
+        return <CardsSkeleton/>
     }
 
-    if (postQueryEp.isError) {
-        return <pre>{JSON.stringify(postQueryEp.error)}</pre>
+    if (characterQuery.isError) {
+        return <pre>{JSON.stringify(characterQuery.error)}</pre>
     }
 
     return (
-        <div>
-            {/* {JSON.stringify(postQueryEp.data)} */}
-            {postQueryEp.data.results.map((post) => {
-                return <div key={post.id}>{post.name}</div>
-            })}
-        </div>
+        <section className={styles.root}>
+            <Outlet/>
+            <Pagination currentPage={currentPage}
+                        pageCount={characterQuery.data.info.pages}
+                        prevPageBtnHandler={(e) => {
+                            if (currentPage != 1) {
+                                setCurrentPage(currentPage-1)
+                            }
+                        }}
+                        nextPageBtnHandler={(e) => { 
+                            if (currentPage != characterQuery.data.info.pages) {
+                                setCurrentPage(currentPage+1)
+                            }
+                        }}/>
+            <div className={styles.cardContainer}>
+                {characterQuery.data.results.map((episode) => {
+                    return <DescriptionCard key={episode.id}
+                                            title={episode.name}
+                                            info={``}
+                                            linkTo={episode.id+''}
+                                            //description={`originated from ${episode.origin.name}`}
+
+                                            />
+                })}
+            </div>
+        </section>
     )
 }
 

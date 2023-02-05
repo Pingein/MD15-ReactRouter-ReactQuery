@@ -4,6 +4,7 @@
     gap: 1em;
     background-color: rgb(35, 40, 43);
     width: 700px;
+    min-height: 100px;
     border-radius: 8px;
 
     font-family: monospace, sans-serif;
@@ -34,4 +35,8 @@
     font-size: 2em;
     line-height: 1;
     margin: 0px 0px 0.25em 0px;
+}
+
+.link {
+    text-decoration: none;
 }

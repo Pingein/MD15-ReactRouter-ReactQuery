@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider, useOutletContext } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import Home from './Pages/Home/Home';
@@ -13,6 +13,8 @@ import FullscreenCard from './assets/FullscreenCard/FullscreenCard';
 import DescriptionCard from './assets/DescriptionCard/DescriptionCard';
 
 import Navigation, { links } from './assets/Navigation/Navigation'
+import axios from 'axios';
+
 
 
 const queryClient = new QueryClient()
@@ -38,7 +40,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/characters/:id",
-        element: <FullscreenCard/>
+        element: <FullscreenCard />
       }
     ]
   },
@@ -50,6 +52,12 @@ const router = createBrowserRouter([
         <Episodes/>
       </section>
     ),
+    children: [
+      {
+        path: "/episodes/:id",
+        element: <FullscreenCard />
+      }
+    ]
   },
   {
     path: "/about",

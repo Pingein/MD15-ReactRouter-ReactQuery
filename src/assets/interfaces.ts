@@ -3,6 +3,11 @@ interface Data {
     results: Character[]
 }
 
+interface EpData {
+    info: Info
+    results: Episode[]
+}
+
 interface Info {
     count: number
     next: string
@@ -35,7 +40,7 @@ interface Origin {
     url: string
 }
 
-interface EpisodeData {
+interface Episode {
     id: number
     name: string
     air_date: string | Date
@@ -45,10 +50,5 @@ interface EpisodeData {
     url: string
 }
 
-interface Episode {
-    link: string
-    ep_name: string
-}
 
-
-export type { Data, Info, Character, Location, Origin, EpisodeData, Episode }
+export type { Data, Info, Character, Location, Origin, Episode, EpData }
