@@ -11,15 +11,12 @@ interface PaginationParams {
 }
 
 const Pagination = ({currentPage, pageCount, prevPageBtnHandler, nextPageBtnHandler }:PaginationParams) => {
-    
-    const prevButtonRef = useRef<HTMLDivElement>()
-    const nextButtonRef = useRef<HTMLDivElement>()
-    
+
     return (
         <div className={styles.root}>
             <div style={currentPage === 1
-                            ? { backgroundColor: 'rgb(59, 59, 59)' }
-                            : { backgroundColor: 'gray' }
+                            ? { backgroundColor: 'rgb(59, 59, 59)', cursor:'not-allowed' }
+                            : { backgroundColor: 'gray', cursor:'pointer' }
                         }
                  className={styles.button}
                  onClick={(e) => {
@@ -31,8 +28,8 @@ const Pagination = ({currentPage, pageCount, prevPageBtnHandler, nextPageBtnHand
                 {currentPage} / {pageCount}
             </div>
             <div style={currentPage === pageCount
-                            ? { backgroundColor: 'rgb(59, 59, 59)' }
-                            : { backgroundColor: 'gray' }
+                            ? { backgroundColor: 'rgb(59, 59, 59)', cursor:'not-allowed' }
+                            : { backgroundColor: 'gray', cursor:'pointer' }
                         }
                  className={styles.button}
                  onClick={(e) => {

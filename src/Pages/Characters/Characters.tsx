@@ -6,11 +6,12 @@ import axios from 'axios'
 import { Character, Data } from '../../assets/interfaces'
 import DescriptionCard from '../../assets/DescriptionCard/DescriptionCard'
 import Pagination from '../../assets/Pagination/Pagination'
+import CardsSkeleton from '../../assets/CardsSkeleton/CardsSkeleton'
 
 
 interface CharactersParams {
 
-}
+} 
 
 
 const Characters = ({}:CharactersParams) => {
@@ -24,7 +25,7 @@ const Characters = ({}:CharactersParams) => {
 
     
     if (characterQuery.isLoading) {
-        return <h1 style={{color:"white", marginTop:"40px"}}>Loading...</h1>
+        return <CardsSkeleton/>
     }
 
     if (characterQuery.isError) {
@@ -55,9 +56,7 @@ const Characters = ({}:CharactersParams) => {
                                             info={`${character.species} ${character.gender} - ${character.status}`}
                                             //description={`originated from ${character.origin.name}`}
 
-                                            cardClickHandler={(e) => {
-                                                
-                                            }}/>
+                                            />
                 })}
             </div>
         </section>

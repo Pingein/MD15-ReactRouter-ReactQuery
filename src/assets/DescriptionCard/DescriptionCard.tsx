@@ -13,12 +13,17 @@ interface DescriptionCardParams {
 
     key?: number | string
 
-    cardClickHandler: React.MouseEventHandler<HTMLDivElement>
+    cardClickHandler?: React.MouseEventHandler<HTMLDivElement>
 }
 
 const DescriptionCard = ({imgSrc, imgAlt, imgTitle, title, info, description, cardClickHandler}:DescriptionCardParams) => {
     return (
-        <div className={styles.card} onClick={cardClickHandler}>
+        <div className={styles.card} 
+             style={cardClickHandler 
+                    ? { cursor: "pointer" }
+                    : { cursor: "arrow" }
+                    }
+             onClick={cardClickHandler}>
             <div className={styles.card_imageContainer}>
                 <img src={imgSrc} alt={imgAlt} title={imgTitle}/>
             </div>

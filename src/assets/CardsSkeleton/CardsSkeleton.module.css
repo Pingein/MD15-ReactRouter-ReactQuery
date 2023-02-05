@@ -1,0 +1,9 @@
+.root {
+    /* margin-top: 12px; */
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: monospace, sans-serif;
+}
