@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import styles from './Pagination.module.css'
 
 
@@ -11,9 +11,17 @@ interface PaginationParams {
 }
 
 const Pagination = ({currentPage, pageCount, prevPageBtnHandler, nextPageBtnHandler }:PaginationParams) => {
+    
+    const prevButtonRef = useRef<HTMLDivElement>()
+    const nextButtonRef = useRef<HTMLDivElement>()
+    
     return (
         <div className={styles.root}>
-            <div className={styles.button}
+            <div style={currentPage === 1
+                            ? { backgroundColor: 'rgb(59, 59, 59)' }
+                            : { backgroundColor: 'gray' }
+                        }
+                 className={styles.button}
                  onClick={(e) => {
                     prevPageBtnHandler(e)
                  }}>
@@ -22,7 +30,11 @@ const Pagination = ({currentPage, pageCount, prevPageBtnHandler, nextPageBtnHand
             <div className={styles.page}>
                 {currentPage} / {pageCount}
             </div>
-            <div className={styles.button}
+            <div style={currentPage === pageCount
+                            ? { backgroundColor: 'rgb(59, 59, 59)' }
+                            : { backgroundColor: 'gray' }
+                        }
+                 className={styles.button}
                  onClick={(e) => {
                     nextPageBtnHandler(e)
                  }}>

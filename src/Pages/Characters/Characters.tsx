@@ -1,5 +1,5 @@
-import { useQuery, QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import React, { useState } from 'react'
+import { useQuery, QueryClient, QueryClientProvider, useMutation } from '@tanstack/react-query'
+import React, { useEffect, useState } from 'react'
 import styles from './Characters.module.css'
 import axios from 'axios'
 
@@ -12,40 +12,41 @@ interface CharactersParams {
 
 }
 
-const Characters = ({}:CharactersParams) => {
 
+const Characters = ({}:CharactersParams) => {
     const [currentPage, setCurrentPage] = useState(1)
 
-    const postQuery = useQuery({
-        queryKey: ["posts"],
+    const characterQuery = useQuery({
+        queryKey: ["character", {page: currentPage}],
         queryFn: () => axios.get(`https://rickandmortyapi.com/api/character?page=${currentPage}`)
                             .then(res => res.data as Data)
     })
 
-    if (postQuery.isLoading) {
-        return (
-            <div>
-                <h1>Loading...</h1>
-            </div>
-        )
+    
+    if (characterQuery.isLoading) {
+        return <h1 style={{color:"white", marginTop:"40px"}}>Loading...</h1>
     }
 
-    if (postQuery.isError) {
-        return <pre>{JSON.stringify(postQuery.error)}</pre>
+    if (characterQuery.isError) {
+        return <pre>{JSON.stringify(characterQuery.error)}</pre>
     }
 
     return (
         <section className={styles.root}>
             <Pagination currentPage={currentPage}
-                        pageCount={10}
+                        pageCount={characterQuery.data.info.pages}
                         prevPageBtnHandler={(e) => {
-                            
+                            if (currentPage != 1) {
+                                setCurrentPage(currentPage-1)
+                            }
                         }}
-                        nextPageBtnHandler={(e) => {
-                            
+                        nextPageBtnHandler={(e) => { 
+                            if (currentPage != characterQuery.data.info.pages) {
+                                setCurrentPage(currentPage+1)
+                            }
                         }}/>
             <div className={styles.cardContainer}>
-                {postQuery.data.results.map((character) => {
+                {characterQuery.data.results.map((character) => {
                     return <DescriptionCard key={character.id}
                                             imgSrc={character.image}
                                             imgAlt={character.name}
@@ -55,7 +56,7 @@ const Characters = ({}:CharactersParams) => {
                                             //description={`originated from ${character.origin.name}`}
 
                                             cardClickHandler={(e) => {
-                                            
+                                                
                                             }}/>
                 })}
             </div>

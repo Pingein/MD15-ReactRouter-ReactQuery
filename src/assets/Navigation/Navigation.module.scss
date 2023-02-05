@@ -20,10 +20,10 @@
     &:link, &:visited {
         color:rgb(226, 242, 255);
     }
-    &:active {
-        color:rgb(190, 226, 255);
-    }
     &:hover {
         color:rgb(255, 255, 255);
+    }
+    &:active {
+        color:rgb(190, 226, 255);
     }
 }
