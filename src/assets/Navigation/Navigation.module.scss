@@ -1,20 +1,29 @@
 .navBar {
     background-color: rgb(54, 54, 54);
     color: aliceblue;
+    padding: 0.1em;
+}
+
+.nav {
+    display: flex;
+    gap: 3em;
+    list-style-type: none
 }
 
 .navText {
-    
     font-family: monospace, sans-serif;
     font-size: 1.5em;
+    text-decoration: none;
+    user-select: none;
 
-    &:link {
-        color:aliceblue;
-    }
-    &:visited {
-        color:aliceblue;
+
+    &:link, &:visited {
+        color:rgb(226, 242, 255);
     }
     &:active {
-        color:rgb(209, 220, 228);
+        color:rgb(190, 226, 255);
+    }
+    &:hover {
+        color:rgb(255, 255, 255);
     }
 }

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styles from './Episodes.module.css'
-import Navigation, { links } from '../../assets/Navigation/Navigation'
 
 import { useQuery, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Data } from '../../assets/interfaces'
@@ -22,7 +21,6 @@ const Episodes = ({}:EpisodesParams) => {
     if (postQueryEp.isLoading) {
         return (
             <div>
-                <Navigation links={links}/>
                 <h1>Loading...</h1>
             </div>
         )
@@ -34,7 +32,6 @@ const Episodes = ({}:EpisodesParams) => {
 
     return (
         <div>
-            <Navigation links={links}/>
             {/* {JSON.stringify(postQueryEp.data)} */}
             {postQueryEp.data.results.map((post) => {
                 return <div key={post.id}>{post.name}</div>

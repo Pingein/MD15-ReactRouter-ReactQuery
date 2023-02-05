@@ -18,15 +18,13 @@ let links:NavLink[] = [{to:'../', text:'Home'},
                        {to:'../episodes', text:'Episodes'},
                        {to:'../about', text:'About'}]
 
-
 const Navigation = ({links}:NavigationParams) => {
     return (
         <div className={styles.navBar}>
             <ul className={styles.nav}>
-
                 {links.map(link => {
                     return (
-                        <li className={styles.navItem}>
+                        <li key={link.text} className={styles.navItem}>
                             <Link className={styles.navText} 
                                 to={link.to}>
                                 {link.text}
@@ -34,28 +32,6 @@ const Navigation = ({links}:NavigationParams) => {
                         </li>
                     )
                 })}
-
-                {/* <li className={styles.navItem}>
-                    <Link className={styles.navText} 
-                          to={`../`}>
-                        Home
-                    </Link>
-                </li>
-
-                <li className={styles.navItem}>
-                    <Link className={styles.navText} 
-                          to={`../characters`}>
-                        Characters
-                    </Link>
-                </li>
-
-                <li className={styles.navItem}>
-                    <Link className={styles.navText} 
-                          to={`../about`}>
-                        About
-                    </Link>
-                </li> */}
-
             </ul>
         </div>
     )

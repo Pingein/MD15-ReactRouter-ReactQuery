@@ -4,8 +4,7 @@ import styles from './Characters.module.css'
 import axios from 'axios'
 
 import { Character, Data } from '../../assets/interfaces'
-
-import Navigation, { links } from '../../assets/Navigation/Navigation'
+import DescriptionCard from '../../assets/DescriptionCard/DescriptionCard'
 
 
 interface CharactersParams {
@@ -25,7 +24,6 @@ const Characters = ({}:CharactersParams) => {
     if (postQuery.isLoading) {
         return (
             <div>
-                <Navigation links={links}/>
                 <h1>Loading...</h1>
             </div>
         )
@@ -37,10 +35,15 @@ const Characters = ({}:CharactersParams) => {
 
     return (
         <div>
-            <Navigation links={links}/>
-            {/* {JSON.stringify(postQuery.data)} */}
-            {postQuery.data.results.map((post) => {
-                return <div key={post.id}>{post.name}</div>
+            {postQuery.data.results.map((character) => {
+                return <DescriptionCard imgSrc={character.image}
+                                        imgAlt={character.name}
+                                        imgTitle={character.name}
+                                        Title={character.name}
+                                        
+                                        cardClickHandler={(e) => {
+                                        
+                                        }}/>
             })}
         </div>
     )
