@@ -1,18 +1,35 @@
 .card {
-    padding: 1em;
+    padding: 0.5em;
     display: flex;
     gap: 0.5em;
+    background-color: rgb(35, 40, 43);
+    width: 700px;
+    border-radius: 8px;
+
+    font-family: monospace, sans-serif;
+    color: aliceblue;
+
+    box-shadow: 0px 0px 5px rgb(27, 27, 27);
+    
 }
 
 .card_imageContainer {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px rgb(20, 20, 20);
+    flex-shrink: 0;
 }
 
 .card_descContainer {
     display: flex;
     flex-direction: column;
-    
+}
+
+.card_title {
+    font-size: 2em;
+    line-height: 1;
+    margin: 0px 0px 0.25em 0px;
 }

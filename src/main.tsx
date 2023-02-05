@@ -9,6 +9,7 @@ import Home from './Pages/Home/Home';
 import Characters from './Pages/Characters/Characters';
 import Episodes from './Pages/Episodes/Episodes';
 import About from './Pages/About/About';
+import FullscreenCard from './assets/FullscreenCard/FullscreenCard';
 import DescriptionCard from './assets/DescriptionCard/DescriptionCard';
 
 import Navigation, { links } from './assets/Navigation/Navigation'
@@ -34,6 +35,12 @@ const router = createBrowserRouter([
         <Characters/>
       </section>
     ),
+    children: [
+      {
+        path: "/characters/:id",
+        element: <FullscreenCard/>
+      }
+    ]
   },
   {
     path: "/episodes",

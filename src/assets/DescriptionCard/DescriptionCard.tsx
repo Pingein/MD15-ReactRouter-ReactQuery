@@ -3,17 +3,20 @@ import styles from './DescriptionCard.module.css'
 
 
 interface DescriptionCardParams {
-    imgSrc: string
+    imgSrc?: string
     imgAlt?: string
     imgTitle?: string
 
-    Title: string
+    title?: string
+    info?: string
+    description?: string
 
+    key?: number | string
 
     cardClickHandler: React.MouseEventHandler<HTMLDivElement>
 }
 
-const DescriptionCard = ({imgSrc, imgAlt, imgTitle, Title, cardClickHandler}:DescriptionCardParams) => {
+const DescriptionCard = ({imgSrc, imgAlt, imgTitle, title, info, description, cardClickHandler}:DescriptionCardParams) => {
     return (
         <div className={styles.card} onClick={cardClickHandler}>
             <div className={styles.card_imageContainer}>
@@ -21,8 +24,10 @@ const DescriptionCard = ({imgSrc, imgAlt, imgTitle, Title, cardClickHandler}:Des
             </div>
             <div className={styles.card_descContainer}>
                 <h1 className={styles.card_title}>
-                    {Title}
+                    {title}
                 </h1>
+                <span>{info}</span>
+                <span>{description}</span>
             </div>
         </div>
     )

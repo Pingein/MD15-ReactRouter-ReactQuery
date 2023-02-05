@@ -1,0 +1,6 @@
+.fullscreen {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(56, 56, 56);
+    opacity: 40%;
+}
