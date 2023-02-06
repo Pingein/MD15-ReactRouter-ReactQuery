@@ -11,8 +11,8 @@ import Episodes from './Pages/Episodes/Episodes';
 import About from './Pages/About/About';
 
 import Navigation, { links } from './assets/Navigation/Navigation'
-import FullscreenCharacterCard from './Pages/FullscreenCard/FullscreenCharacterCard';
-import FullscreenEpisodeCard from './Pages/FullscreenCard/FullscreenEpisodeCard';
+import FullscreenCharacterCard from './assets/FullscreenCard/FullscreenCharacterCard';
+import FullscreenEpisodeCard from './assets/FullscreenCard/FullscreenEpisodeCard';
 import ErrorPage from './Pages/ErrorPage/ErrorPage';
 
 

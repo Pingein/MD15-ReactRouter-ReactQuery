@@ -28,15 +28,14 @@ const Characters = () => {
     return (
         <section className={styles.root}>
             <Outlet/>
-
             <Pagination currentPage={currentPage}
                         pageCount={characterQuery.data.info.pages}
-                        prevPageBtnHandler={(e) => {
+                        prevPageBtnHandler={() => {
                             if (currentPage != 1) {
                                 setCurrentPage(currentPage-1)
                             }
                         }}
-                        nextPageBtnHandler={(e) => { 
+                        nextPageBtnHandler={() => { 
                             if (currentPage != characterQuery.data.info.pages) {
                                 setCurrentPage(currentPage+1)
                             }

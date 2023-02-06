@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
-import { Episode } from '../../assets/interfaces'
+import { Episode } from '../interfaces'
 import styles from './FullscreenCard.module.scss'
 
-import { numberToStringFormat } from '../../assets/helper'
+import { numberToStringFormat } from '../helper'
 
 
 const FullscreenEpisodeCard = () => {
