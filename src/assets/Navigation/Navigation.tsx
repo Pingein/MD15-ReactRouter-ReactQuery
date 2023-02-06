@@ -38,6 +38,7 @@ const Navigation = ({links}:NavigationParams) => {
 }
 
 
+export { links }
+
 export default Navigation
 
-export { links }

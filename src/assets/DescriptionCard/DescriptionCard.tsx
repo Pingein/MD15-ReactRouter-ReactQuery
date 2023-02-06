@@ -44,7 +44,7 @@ const DescriptionCard = ({imgSrc, imgAlt, imgTitle, title, info, description, li
                         {title}
                     </h1>
                     <span className={styles.card_info}>{info}</span>
-                    <span>{description}</span>
+                    <span className={styles.card_desc}>{description}</span>
                 </div>
             </div>
         </Link>

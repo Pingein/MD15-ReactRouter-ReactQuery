@@ -19,7 +19,7 @@ const Episodes = ({}:EpisodesParams) => {
     const [currentPage, setCurrentPage] = useState(1)
 
     const characterQuery = useQuery({
-        queryKey: ["episode", {page: currentPage}],
+        queryKey: ["episodes", {page: currentPage}],
         queryFn: () => axios.get(`https://rickandmortyapi.com/api/episode?page=${currentPage}`)
                             .then(res => res.data as EpData)
     })

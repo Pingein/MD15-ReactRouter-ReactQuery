@@ -18,10 +18,8 @@ interface CharactersParams {
 const Characters = ({}:CharactersParams) => {
     const [currentPage, setCurrentPage] = useState(1)
 
-    const [context, setContext] = useState<Character>();
-
     const characterQuery = useQuery({
-        queryKey: ["character", {page: currentPage}],
+        queryKey: ["characters", {page: currentPage}],
         queryFn: () => axios.get(`https://rickandmortyapi.com/api/character?page=${currentPage}`)
                             .then(res => res.data as Data)
     })
@@ -37,7 +35,7 @@ const Characters = ({}:CharactersParams) => {
 
     return (
         <section className={styles.root}>
-            <Outlet context={{data:characterQuery.data.results}}/>
+            <Outlet/>
 
             <Pagination currentPage={currentPage}
                         pageCount={characterQuery.data.info.pages}
@@ -70,9 +68,6 @@ const Characters = ({}:CharactersParams) => {
                                             description={`${character.name} is a ${character.species} ${character.gender} who originated from '${character.origin.name}' and was last seen on '${character.location.name}'`}
                                             linkTo={character.id+''}
                                             //description={`originated from ${character.origin.name}`}
-                                            cardClickHandler = {(e) => {
-                                                setContext(character)
-                                            }}
                                             />
                 })}
             </div>
