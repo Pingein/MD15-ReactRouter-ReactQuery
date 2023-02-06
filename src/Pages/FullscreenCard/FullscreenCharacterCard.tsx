@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Character } from '../interfaces'
+import { Character } from '../../assets/interfaces'
 import styles from './FullscreenCard.module.scss'
 
 
