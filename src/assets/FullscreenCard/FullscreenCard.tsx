@@ -18,7 +18,7 @@ const FullscreenCard = ({}:FullscreenCardParams) => {
             <div className={styles.backdrop}></div>
 
             <div className={styles.card}>
-                <Link to='/characters'><div className={styles.closeBtn}></div></Link>
+                <Link to='..'><div className={styles.closeBtn}></div></Link>
 
             </div>
         </div>

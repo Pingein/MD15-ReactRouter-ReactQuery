@@ -37,6 +37,11 @@
     margin: 0px 0px 0.25em 0px;
 }
 
+.card_info {
+    margin-bottom: 6px;
+    font-size: 1.125em;
+}
+
 .link {
     text-decoration: none;
 }

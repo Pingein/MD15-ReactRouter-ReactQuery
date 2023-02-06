@@ -52,7 +52,8 @@ const Episodes = ({}:EpisodesParams) => {
                 {characterQuery.data.results.map((episode) => {
                     return <DescriptionCard key={episode.id}
                                             title={episode.name}
-                                            info={``}
+                                            info={episode.episode}
+                                            description={`Launched on: ${episode.air_date}`}
                                             linkTo={episode.id+''}
                                             //description={`originated from ${episode.origin.name}`}
 

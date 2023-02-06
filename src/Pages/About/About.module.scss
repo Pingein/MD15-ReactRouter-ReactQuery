@@ -1,0 +1,41 @@
+.root {
+    margin-top: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    font-family: monospace, sans-serif;
+    color: aliceblue;
+    font-size: 1.5rem;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.madeBy {
+    margin-bottom: 6px;
+}
+
+.usedLinks {
+    text-align: center;
+    margin: 32px;
+}
+
+.more {
+    text-align: center;
+}
+
+.link {
+    &:link, &:visited {
+        color: aliceblue;
+    }
+    &:hover {
+        color: rgb(228, 243, 255);
+    }
+    &:active {
+        color:rgb(190, 226, 255);
+    }
+}

@@ -38,13 +38,12 @@ const DescriptionCard = ({imgSrc, imgAlt, imgTitle, title, info, description, li
                 onClick={cardClickHandler}>
                 {imgSrc 
                  ? <CardImage imgSrc={imgSrc} imgAlt={imgAlt} imgTitle={imgTitle}/>
-                 : 0}
-
+                 : null}
                 <div className={styles.card_descContainer}>
                     <h1 className={styles.card_title}>
                         {title}
                     </h1>
-                    <span>{info}</span>
+                    <span className={styles.card_info}>{info}</span>
                     <span>{description}</span>
                 </div>
             </div>

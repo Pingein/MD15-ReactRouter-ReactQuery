@@ -53,12 +53,21 @@ const Characters = ({}:CharactersParams) => {
                         }}/>
             <div className={styles.cardContainer}>
                 {characterQuery.data.results.map((character) => {
+                    // let statusColor:string
+                    // if (character.status == 'Dead') {
+                    //     statusColor = 'red'
+                    // } else if (character.status == 'Alive') {
+                    //     statusColor = 'green'
+                    // } else {
+                    //     statusColor = 'white'
+                    // }
                     return <DescriptionCard key={character.id}
                                             imgSrc={character.image}
                                             imgAlt={character.name}
                                             imgTitle={character.name}
                                             title={character.name}
-                                            info={`${character.species} ${character.gender} - ${character.status}`}
+                                            info={`${character.status}`}
+                                            description={`${character.name} is a ${character.species} ${character.gender} who originated from '${character.origin.name}' and was last seen on '${character.location.name}'`}
                                             linkTo={character.id+''}
                                             //description={`originated from ${character.origin.name}`}
                                             cardClickHandler = {(e) => {
