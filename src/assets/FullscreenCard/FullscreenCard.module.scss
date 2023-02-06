@@ -67,9 +67,27 @@
 
 
 .episodesContainer {
-    width: 484px;
+    width: 480px;
     max-height: 85%;
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    background-color: rgb(26, 33, 36);
+    box-shadow: inset 0px 0px 5px rgb(22, 28, 31),
+                0px 0px 5px rgb(22, 28, 31);
+    //box-shadow: 0px 0px 5px rgb(22, 28, 31);
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    // &::-webkit-scrollbar-track {
+    //     background: #f1f1f1;
+    // }
+    &::-webkit-scrollbar-thumb {
+        background: rgb(41, 47, 49);
+        border-radius: 5px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgb(52, 59, 61);
+    }
 }

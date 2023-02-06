@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import DescriptionCard from '../DescriptionCard/DescriptionCard'
 import Pagination from '../Pagination/Pagination'
 import styles from './CardsSkeleton.module.css'

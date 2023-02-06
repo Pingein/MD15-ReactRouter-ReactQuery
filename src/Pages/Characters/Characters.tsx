@@ -3,19 +3,14 @@ import React, { useState } from 'react'
 import styles from './Characters.module.css'
 import axios from 'axios'
 
-import { Character, Data } from '../../assets/interfaces'
+import { Data } from '../../assets/interfaces'
 import DescriptionCard from '../../assets/DescriptionCard/DescriptionCard'
 import Pagination from '../../assets/Pagination/Pagination'
 import CardsSkeleton from '../../assets/CardsSkeleton/CardsSkeleton'
-import { Outlet, useOutletContext } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 
 
-interface CharactersParams {
-
-} 
-
-
-const Characters = ({}:CharactersParams) => {
+const Characters = () => {
     const [currentPage, setCurrentPage] = useState(1)
 
     const characterQuery = useQuery({
@@ -23,12 +18,9 @@ const Characters = ({}:CharactersParams) => {
         queryFn: () => axios.get(`https://rickandmortyapi.com/api/character?page=${currentPage}`)
                             .then(res => res.data as Data)
     })
-
-    
     if (characterQuery.isLoading) {
         return <CardsSkeleton/>
     }
-
     if (characterQuery.isError) {
         return <pre>{JSON.stringify(characterQuery.error)}</pre>
     }
@@ -67,7 +59,6 @@ const Characters = ({}:CharactersParams) => {
                                             info={`${character.status}`}
                                             description={`${character.name} is a ${character.species} ${character.gender} who originated from '${character.origin.name}' and was last seen on '${character.location.name}'`}
                                             linkTo={character.id+''}
-                                            //description={`originated from ${character.origin.name}`}
                                             />
                 })}
             </div>

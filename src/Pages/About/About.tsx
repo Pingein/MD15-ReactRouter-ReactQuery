@@ -1,12 +1,7 @@
-import React, { useState } from 'react'
 import styles from './About.module.scss'
 
 
-interface AboutParams {
-
-}
-
-const About = ({}:AboutParams) => {
+const About = () => {
     return (
         <div className={styles.root}>
             <span className={styles.madeBy}>

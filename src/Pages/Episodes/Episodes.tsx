@@ -3,19 +3,15 @@ import styles from './Episodes.module.css'
 
 import { EpData } from '../../assets/interfaces'
 
-import { useQuery, QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { Data } from '../../assets/interfaces'
+import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import Pagination from '../../assets/Pagination/Pagination'
 import DescriptionCard from '../../assets/DescriptionCard/DescriptionCard'
 import CardsSkeleton from '../../assets/CardsSkeleton/CardsSkeleton'
 import { Outlet } from 'react-router-dom'
 
-interface EpisodesParams {
 
-}
-
-const Episodes = ({}:EpisodesParams) => {
+const Episodes = () => {
     const [currentPage, setCurrentPage] = useState(1)
 
     const characterQuery = useQuery({
@@ -56,7 +52,6 @@ const Episodes = ({}:EpisodesParams) => {
                                             description={`Launched on: ${episode.air_date}`}
                                             linkTo={episode.id+''}
                                             //description={`originated from ${episode.origin.name}`}
-
                                             />
                 })}
             </div>

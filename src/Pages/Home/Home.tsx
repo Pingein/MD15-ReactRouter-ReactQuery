@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
 import styles from './Home.module.scss'
 
 
 const Home = () => {
-
     return (
         <div className={styles.root}>
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Rick_and_Morty.svg/1200px-Rick_and_Morty.svg.png" alt="Rick & Morty logo" width={'800px'}/>

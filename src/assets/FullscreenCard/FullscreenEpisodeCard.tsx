@@ -1,12 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
-import React, { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Data, Character, EpData, Episode } from '../interfaces'
-import styles from './FullscreenCard.module.css'
+import { Episode } from '../interfaces'
+import styles from './FullscreenCard.module.scss'
 
 import { numberToStringFormat } from '../helper'
-
 
 
 const FullscreenEpisodeCard = () => {
@@ -17,7 +15,6 @@ const FullscreenEpisodeCard = () => {
         queryFn: () => axios.get(`https://rickandmortyapi.com/api/episode/${id}`)
                             .then(res => res.data as Episode)
     })
-
     if (episodeQuery.isLoading) {
         return (
             <div className={styles.fullscreen}>
@@ -25,41 +22,34 @@ const FullscreenEpisodeCard = () => {
             </div>
         )
     }
-
     if (episodeQuery.isError) {
         return <h1>Error</h1>
     }
 
     const { name, air_date, episode, characters, created, url } = episodeQuery.data
 
-    const [season, ep] = Array(episode.match(RegExp(/\d+/g)))
+    let season = parseInt(episode.slice(1,3))
+    let ep = parseInt(episode.slice(4,6))
 
-    // if (season && ep) {
-    //     console.log(numberToStringFormat(season), numberToStringFormat(ep))
-    // }
-    
     return (
         <div className={styles.fullscreen}>
             <div className={styles.backdrop}></div>
-            
             <div className={styles.card}>
 
                 <div className={styles.leftSide}>
                     <h1 className={styles.name}>{name}</h1>
-                    <p>{`${name} is the 'epN' episode in 'sN' season, it aired on ${air_date}, `}</p>
+                    <p>{`${name} is the ${numberToStringFormat(ep)} episode in ${numberToStringFormat(season)} season, it aired on ${air_date}`}</p>
                 </div>
 
                 <div className={styles.rightSide}>
                     <Link to='..'><div className={styles.closeBtn}></div></Link>
+                    <h1>Characters in {name}:</h1>
+                    <div className={styles.characterContainer}>
 
+                    </div>
                 </div>
-
-                
-                
-            </div>
-            
+            </div> 
         </div>
-
     )
 }
 

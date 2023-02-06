@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
 import styles from './Navigation.module.scss'
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 interface NavLink {
